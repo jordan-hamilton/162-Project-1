@@ -1,19 +1,11 @@
 language: cpp
-compiler:
-  - clang
-  - gcc
-os:
-  - linux
-  - osx
-dist:
-  - precise
-  - trusty
-matrix:
-  include:
-    - os: osx
-      osx_image: xcode8
-      env:
-        - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
-
-before_install:
-  - eval "${MATRIX_EVAL}"
+compiler: gcc
+dist: trusty
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
+    - gcc-4.8
+script: make
