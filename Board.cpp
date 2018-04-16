@@ -10,6 +10,7 @@ Board::Board() {
   }
 }
 
+
 Board::Board(int rowsToAdd, int colsToAdd) {
   setRows(rowsToAdd);
   setColumns(colsToAdd);
@@ -20,21 +21,31 @@ Board::Board(int rowsToAdd, int colsToAdd) {
   }
 }
 
+
+void Board::printBoard() {
+
+}
+
+
 void Board::setRows(int rowsToAdd) {
   rows = rowsToAdd;
 }
+
 
 int Board::getRows() {
   return rows;
 }
 
+
 void Board::setColumns(int colsToAdd) {
   columns = colsToAdd;
 }
 
+
 int Board::getColumns() {
   return columns;
 }
+
 
 Board::~Board() {
   for (int i = 0; i < rows; i++) {

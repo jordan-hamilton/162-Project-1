@@ -2,7 +2,7 @@
 #define BOARD_HPP
 
 class Board {
-  
+
   private:
     int** gameBoard;
     int rows;
@@ -16,6 +16,7 @@ class Board {
     void setColumns(int colsToAdd);
     int getColumns();
     ~Board();
+    
 };
 
 #endif
