@@ -7,14 +7,15 @@ class Menu {
 
   private:
     std::vector<std::string> menu;
-    int choices;
-    
+    int selectedItem;
+
   public:
     Menu();
     void displayMenu();
     void addMenuItem(std::string choice);
-    void setChoices(int numberOfChoices);
-    int getChoices();
+    void promptUser();
+    void setSelectedItem(int input);
+    int getSelectedItem();
 };
 
 #endif
