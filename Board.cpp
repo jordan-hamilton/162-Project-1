@@ -2,9 +2,6 @@
 
 #include "Board.hpp"
 
-using std::cout;
-using std::endl;
-
 Board::Board() {
   setRows(5);
   setColumns(5);
@@ -46,9 +43,9 @@ Board::Board(int rowsToAdd, int colsToAdd) {
 void Board::printBoard() {
   for (int i = 0; i < rows; i++) {
     for (int j = 0; j < columns; j++) {
-      cout << gameBoard[i][j];
+      std::cout << gameBoard[i][j];
     }
-    cout << endl;
+    std::cout << std::endl;
   }
 }
 
