@@ -1,34 +1,64 @@
+#include <iostream>
+
 #include "Board.hpp"
+
+using std::cout;
+using std::endl;
 
 Board::Board() {
   setRows(5);
   setColumns(5);
-  gameBoard = new int*[rows];
+
+  gameBoard = new char*[rows];
 
   for (int i = 0; i < rows; i++) {
-    gameBoard[i] = new int[columns];
+    gameBoard[i] = new char[columns];
   }
+
+  for (int j = 0; j < columns; j++) {
+    for (int i = 0; i < rows; i++) {
+      gameBoard[i][j] = ' ';
+    }
+  }
+
 }
 
 
 Board::Board(int rowsToAdd, int colsToAdd) {
   setRows(rowsToAdd);
   setColumns(colsToAdd);
-  gameBoard = new int*[rows];
+
+  gameBoard = new char*[rows];
 
   for (int i = 0; i < rows; i++) {
-    gameBoard[i] = new int[columns];
+    gameBoard[i] = new char[columns];
   }
+
+  for (int j = 0; j < columns; j++) {
+    for (int i = 0; i < rows; i++) {
+      gameBoard[i][j] = ' ';
+    }
+  }
+
 }
 
 
 void Board::printBoard() {
-
+  for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < columns; j++) {
+      cout << gameBoard[i][j];
+    }
+    cout << endl;
+  }
 }
 
 
 void Board::setRows(int rowsToAdd) {
-  rows = rowsToAdd;
+  if (rowsToAdd > 0) {
+    rows = rowsToAdd;
+  } else {
+    rows = 5;
+  }
 }
 
 
@@ -38,7 +68,12 @@ int Board::getRows() {
 
 
 void Board::setColumns(int colsToAdd) {
-  columns = colsToAdd;
+  if (colsToAdd > 0) {
+    columns = colsToAdd;
+  } else {
+    columns = 5;
+  }
+
 }
 
 
