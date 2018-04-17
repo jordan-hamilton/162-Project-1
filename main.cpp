@@ -26,9 +26,6 @@ int main() {
     Board antBoard(requestedRows, requestedCols);
     Ant gameAnt(startingRow, startingCol, requestedSteps);
     antBoard.addAnt(&gameAnt);
-    cout << "Rows: " << antBoard.getRows() << endl;
-    cout << "Columns: " << antBoard.getColumns() << endl;
-    antBoard.printBoard();
     antBoard.simulate();
   }
 
