@@ -78,10 +78,42 @@ int Board::getColumns() {
   return columns;
 }
 
+
 void Board::addAnt(Ant* newAnt) {
+
   if (newAnt) {
-    gameBoard[newAnt->getXCoord()][newAnt->getYCoord()] = '*';
+
+    gameAnt = newAnt;
+    gameBoard[gameAnt->getXCoord()][gameAnt->getYCoord()] = '*';
+    activeState = 'W';
   }
+
+}
+
+
+void Board::simulate() {
+
+  if (gameAnt) {
+
+    std::cout << "Moves remaining: " << gameAnt->getMoves();
+
+    while (gameAnt->getMoves() > 0) {
+
+      if (activeState == 'W') {
+        gameBoard[gameAnt->getXCoord()][gameAnt->getYCoord()] = '#';
+        gameAnt->moveRight();
+
+      } else if (activeState == 'B') {
+        gameBoard[gameAnt->getXCoord()][gameAnt->getYCoord()] = ' ';
+        gameAnt->moveLeft();
+
+      }
+      gameBoard[gameAnt->getXCoord()][gameAnt->getYCoord()] = '*';
+      gameAnt->setMoves(gameAnt->getMoves() - 1);
+      printBoard();
+    }
+  }
+
 }
 
 
