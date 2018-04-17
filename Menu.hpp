@@ -1,3 +1,7 @@
+/*********************************************************************
+** Description: Header file for the determinant function.
+*********************************************************************/
+
 #ifndef MENU_HPP
 #define MENU_HPP
 
