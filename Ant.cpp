@@ -51,21 +51,25 @@ void Ant::moveRight() {
 
     case N:
     {
+      setYCoord(yCoord - 1);
       setOrientation(E);
       break;
     }
     case S:
     {
+      setYCoord(yCoord + 1);
       setOrientation(W);
       break;
     }
     case E:
     {
+      setXCoord(xCoord - 1);
       setOrientation(S);
       break;
     }
     case W:
     {
+      setXCoord(xCoord + 1);
       setOrientation(N);
       break;
     }
