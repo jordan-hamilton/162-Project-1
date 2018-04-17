@@ -3,8 +3,8 @@
 #include "Board.hpp"
 
 Board::Board() {
-  setRows(5);
-  setColumns(5);
+  setRows(25);
+  setColumns(25);
 
   gameBoard = new char*[rows];
 
@@ -17,7 +17,7 @@ Board::Board() {
       gameBoard[i][j] = ' ';
     }
   }
-
+  
 }
 
 
@@ -54,7 +54,7 @@ void Board::setRows(int rowsToAdd) {
   if (rowsToAdd > 0) {
     rows = rowsToAdd;
   } else {
-    rows = 5;
+    rows = 25;
   }
 }
 
@@ -68,7 +68,7 @@ void Board::setColumns(int colsToAdd) {
   if (colsToAdd > 0) {
     columns = colsToAdd;
   } else {
-    columns = 5;
+    columns = 25;
   }
 
 }
@@ -76,6 +76,12 @@ void Board::setColumns(int colsToAdd) {
 
 int Board::getColumns() {
   return columns;
+}
+
+void Board::addAnt(Ant* newAnt) {
+  if (newAnt) {
+    gameBoard[newAnt->getXCoord()][newAnt->getYCoord()] = '*';
+  }
 }
 
 

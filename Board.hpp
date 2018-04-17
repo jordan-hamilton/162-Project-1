@@ -6,7 +6,7 @@
 class Board {
 
   private:
-    Ant gameAnt;
+    Ant* gameAnt;
     char** gameBoard;
     int rows;
     int columns;
@@ -19,7 +19,9 @@ class Board {
     int getRows();
     void setColumns(int colsToAdd);
     int getColumns();
+    void addAnt(Ant* newAnt);
     ~Board();
+
 
 };
 
