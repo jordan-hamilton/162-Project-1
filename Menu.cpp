@@ -10,12 +10,13 @@ void displayMenu() {
 }
 
 
-int getIntChoice(const std::string &prompt, int minVal, int maxVal) {
+int getIntChoiceFromPrompt(const std::string &prompt, const int &minVal, const int &maxVal) {
 
   int userInput;
 
   do {
-    std::cout << prompt << " ";
+    std::cout << prompt << std::endl;
+    std::cout << "Valid input range: [" << minVal << " - " << maxVal << "]: ";
     std::cin >> userInput;
   } while(!checkIntInput(userInput, minVal, maxVal));
 
@@ -23,7 +24,7 @@ return userInput;
 
 }
 
-bool checkIntInput(int &inputVal, int minVal, int maxVal) {
+bool checkIntInput(const int &inputVal, const int &minVal, const int &maxVal) {
 
   if (!std::cin) {
     std::cin.clear();

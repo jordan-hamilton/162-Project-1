@@ -3,8 +3,8 @@
 
 void displayMenu();
 //int promptUser();
-int getIntChoice(const std::string &prompt, int minVal, int maxVal);
+int getIntChoiceFromPrompt(const std::string &prompt, const int &minVal, const int &maxVal);
 //bool checkIntInput();
-bool checkIntInput(int &inputVal, int minVal, int maxVal);
+bool checkIntInput(const int &inputVal, const int &minVal, const int &maxVal);
 
 #endif
