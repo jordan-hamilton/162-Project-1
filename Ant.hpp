@@ -1,21 +1,29 @@
 #ifndef ANT_HPP
 #define ANT_HPP
 
-
-#include "Board.hpp"
-
+enum Direction { N, S, E, W };
 
 class Ant {
 
   private:
-    Board antBoard;
-    char orientation;
+    Direction orientation;
+    int moves;
+    int xCoord;
+    int yCoord;
 
   public:
     Ant();
     Ant(int startingX, int startingY);
-    void setOrientation(char direction);
-    char getOrientation();
+    void moveLeft();
+    void moveRight();
+    void setXCoord(int xIn);
+    int getXCoord();
+    void setYCoord(int yIn);
+    int getYCoord();
+    void setOrientation(Direction dirIn);
+    Direction getOrientation();
+    void setMoves(int movesIn);
+    int getMoves();
 
 };
 
