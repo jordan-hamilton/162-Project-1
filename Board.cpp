@@ -7,6 +7,7 @@ Board::Board() {
   setColumns(25);
 
   gameBoard = new char*[rows];
+  activeState = 'W';
 
   for (int i = 0; i < rows; i++) {
     gameBoard[i] = new char[columns];
@@ -14,7 +15,7 @@ Board::Board() {
 
   for (int j = 0; j < columns; j++) {
     for (int i = 0; i < rows; i++) {
-      gameBoard[i][j] = '_';
+      gameBoard[i][j] = ' ';
     }
   }
 
@@ -26,6 +27,7 @@ Board::Board(int rowsToAdd, int colsToAdd) {
   setColumns(colsToAdd);
 
   gameBoard = new char*[rows];
+  activeState = 'W';
 
   for (int i = 0; i < rows; i++) {
     gameBoard[i] = new char[columns];
@@ -33,7 +35,7 @@ Board::Board(int rowsToAdd, int colsToAdd) {
 
   for (int j = 0; j < columns; j++) {
     for (int i = 0; i < rows; i++) {
-      gameBoard[i][j] = '_';
+      gameBoard[i][j] = ' ';
     }
   }
 
@@ -47,6 +49,7 @@ void Board::printBoard() {
     }
     std::cout << std::endl;
   }
+  std::cout << std::endl;
 }
 
 
@@ -85,7 +88,7 @@ void Board::addAnt(Ant* newAnt) {
 
     gameAnt = newAnt;
     gameBoard[gameAnt->getXCoord()][gameAnt->getYCoord()] = '*';
-    activeState = 'W';
+
   }
 
 }
@@ -95,7 +98,7 @@ void Board::simulate() {
 
   if (gameAnt) {
 
-    std::cout << "Moves remaining: " << gameAnt->getMoves();
+    printBoard();
 
     while (gameAnt->getMoves() > 0) {
 
@@ -108,9 +111,19 @@ void Board::simulate() {
         gameAnt->moveLeft();
 
       }
+
+      if (gameBoard[gameAnt->getXCoord()][gameAnt->getYCoord()] == ' ') {
+        activeState = 'W';
+
+      } else if (gameBoard[gameAnt->getXCoord()][gameAnt->getYCoord()] == '#') {
+        activeState = 'B';
+
+      }
+
       gameBoard[gameAnt->getXCoord()][gameAnt->getYCoord()] = '*';
-      gameAnt->setMoves(gameAnt->getMoves() - 1);
+      
       printBoard();
+
     }
   }
 

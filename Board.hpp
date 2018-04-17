@@ -1,3 +1,7 @@
+/*********************************************************************
+** Description: Specification file for the Board class.
+*********************************************************************/
+
 #ifndef BOARD_HPP
 #define BOARD_HPP
 
