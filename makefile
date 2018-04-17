@@ -10,7 +10,7 @@ Menu.o: Menu.cpp Menu.hpp
 Ant.o: Ant.cpp Ant.hpp
 	g++ -c Ant.cpp
 
-Board.o: Board.cpp Board.hpp
+Board.o: Board.cpp Board.hpp Ant.cpp Ant.hpp
 	g++ -c Board.cpp
 
 clean:
