@@ -14,14 +14,14 @@ int main() {
 
   displayMenu();
 
-  if (getIntChoice("Select an available menu option:", 1 , 2) == 2) {
+  if (getIntChoiceFromPrompt("Select an available menu option.", 1 , 2) == 2) {
     return 0;
   } else {
-    requestedRows = getIntChoice("How many rows should there be on this board?", 1, std::numeric_limits<int>::max());
-    requestedCols = getIntChoice("How many columns should there be on this board?", 1, std::numeric_limits<int>::max());
-    startingRow = getIntChoice("Which row should the ant start in?", 0, requestedRows);
-    startingCol = getIntChoice("Which column should the ant start in?", 0, requestedCols);
-    requestedSteps = getIntChoice("How many steps should there be in this simulation?", 0, std::numeric_limits<int>::max());
+    requestedRows = getIntChoiceFromPrompt("How many rows should there be on this board?", 1, std::numeric_limits<int>::max());
+    requestedCols = getIntChoiceFromPrompt("How many columns should there be on this board?", 1, std::numeric_limits<int>::max());
+    startingRow = getIntChoiceFromPrompt("Which row should the ant start in?", 0, requestedRows-1);
+    startingCol = getIntChoiceFromPrompt("Which column should the ant start in?", 0, requestedCols-1);
+    requestedSteps = getIntChoiceFromPrompt("How many steps should there be in this simulation?", 0, std::numeric_limits<int>::max());
 
     Board antBoard(requestedRows, requestedCols);
     cout << "Rows: " << antBoard.getRows() << endl;
