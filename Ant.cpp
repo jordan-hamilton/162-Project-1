@@ -18,68 +18,76 @@ Ant::Ant(int startingX, int startingY, int startingMoves) {
 
 
 void Ant::moveLeft() {
+
   switch (getOrientation()) {
 
     case N:
     {
-      setYCoord(yCoord - 1);
       setOrientation(W);
+      setYCoord(yCoord - 1);
+
       break;
     }
     case S:
     {
-      setYCoord(yCoord + 1);
       setOrientation(E);
+      setYCoord(yCoord + 1);
+
       break;
     }
     case E:
     {
-      setXCoord(xCoord - 1);
       setOrientation(N);
+      setXCoord(xCoord - 1);
       break;
     }
     case W:
     {
-      setXCoord(xCoord + 1);
       setOrientation(S);
+      setXCoord(xCoord + 1);
       break;
     }
   }
 
   setMoves(moves - 1);
+
 }
 
 
 void Ant::moveRight() {
+
   switch (getOrientation()) {
 
     case N:
     {
-      setYCoord(yCoord - 1);
       setOrientation(E);
+      setYCoord(yCoord + 1);
+
       break;
     }
     case S:
     {
-      setYCoord(yCoord + 1);
       setOrientation(W);
+      setYCoord(yCoord - 1);
       break;
     }
     case E:
     {
-      setXCoord(xCoord - 1);
       setOrientation(S);
+      setXCoord(xCoord + 1);
       break;
     }
     case W:
     {
-      setXCoord(xCoord + 1);
       setOrientation(N);
+      setXCoord(xCoord - 1);
       break;
     }
+
   }
 
   setMoves(moves - 1);
+
 }
 
 
