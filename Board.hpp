@@ -1,9 +1,12 @@
 #ifndef BOARD_HPP
 #define BOARD_HPP
 
+#include "Ant.hpp"
+
 class Board {
 
   private:
+    Ant gameAnt;
     char** gameBoard;
     int rows;
     int columns;
