@@ -24,6 +24,8 @@ int main() {
     requestedSteps = getIntChoiceFromPrompt("How many steps should there be in this simulation?", 0, std::numeric_limits<int>::max());
 
     Board antBoard(requestedRows, requestedCols);
+    Ant gameAnt(startingRow, startingCol, requestedSteps);
+    antBoard.addAnt(&gameAnt);
     cout << "Rows: " << antBoard.getRows() << endl;
     cout << "Columns: " << antBoard.getColumns() << endl;
     antBoard.printBoard();
