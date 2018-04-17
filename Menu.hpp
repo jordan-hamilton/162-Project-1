@@ -1,5 +1,5 @@
 /*********************************************************************
-** Description: Header file for the determinant function.
+** Description: Header file for menu functions.
 *********************************************************************/
 
 #ifndef MENU_HPP
