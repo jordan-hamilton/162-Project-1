@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 #include "Board.hpp"
 
@@ -112,6 +113,14 @@ void Board::simulate() {
 
       }
 
+      if (gameAnt->getXCoord() < 0 || gameAnt->getXCoord() >= rows) {
+        gameAnt->setXCoord( abs(gameAnt->getXCoord() + rows) % rows );
+      }
+
+      if (gameAnt->getYCoord() < 0 || gameAnt->getYCoord() >= columns) {
+        gameAnt->setYCoord( abs(gameAnt->getYCoord() + columns) % columns );
+      }
+
       if (gameBoard[gameAnt->getXCoord()][gameAnt->getYCoord()] == ' ') {
         activeState = 'W';
 
@@ -121,7 +130,7 @@ void Board::simulate() {
       }
 
       gameBoard[gameAnt->getXCoord()][gameAnt->getYCoord()] = '*';
-      
+
       printBoard();
 
     }
