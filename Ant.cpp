@@ -22,21 +22,25 @@ void Ant::moveLeft() {
 
     case N:
     {
+      setYCoord(yCoord - 1);
       setOrientation(W);
       break;
     }
     case S:
     {
+      setYCoord(yCoord + 1);
       setOrientation(E);
       break;
     }
     case E:
     {
+      setXCoord(xCoord - 1);
       setOrientation(N);
       break;
     }
     case W:
     {
+      setXCoord(xCoord + 1);
       setOrientation(S);
       break;
     }
