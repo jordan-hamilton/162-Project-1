@@ -1,60 +1,40 @@
 #include <string>
 #include <iostream>
+#include <limits>
 
 #include "Menu.hpp"
 
-Menu::Menu() {
-  int selectedItem = 0;
+void displayMenu() {
+  std::cout << "1) Start Langton’s Ant simulation" << std::endl;
+  std::cout << "2) Quit" << std::endl;
 }
 
 
-void Menu::displayMenu() {
-  if(!menu.empty()) {
-    for (int i = 0; i < menu.size(); i++) {
-      std::cout << i+1 << ") " << menu.at(i) << std::endl;
-    }
-  }
-}
+int getIntChoice(const std::string &prompt, int minVal, int maxVal) {
 
-
-void Menu::addMenuItem(std::string choice) {
-    menu.push_back(choice);
-}
-
-
-void Menu::promptUser() {
-  int selection;
-  bool valid = false;
+  int userInput;
 
   do {
-    std::cout << "Select an available menu option: ";
-    std::cin >> selection;
+    std::cout << prompt << " ";
+    std::cin >> userInput;
+  } while(!checkIntInput(userInput, minVal, maxVal));
 
-    if (std::cin) {
+return userInput;
 
-      if ((selection > 0) && (selection <= menu.size())) {
-        valid = true;
-        setSelectedItem(selection);
-      } else {
-        std::cout << "Available menu options are between 1 and " << menu.size() << "." << std::endl;
-      }
+}
 
+bool checkIntInput(int &inputVal, int minVal, int maxVal) {
+
+  if (!std::cin) {
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    return false;
+  } else {
+
+    if ((inputVal >= minVal) && (inputVal <= maxVal)) {
+      return true;
     } else {
-      std::cout << "Invalid entry." << std::endl;
-      std::cin.clear();
-      std::cin.ignore(1000, '\n');
+      return false;
     }
-
-  } while (!valid);
-
-}
-
-
-void Menu::setSelectedItem(int input) {
-  selectedItem = input;
-}
-
-
-int Menu::getSelectedItem() {
-  return selectedItem;
+  }
 }
