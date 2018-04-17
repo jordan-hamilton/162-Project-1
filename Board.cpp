@@ -14,10 +14,10 @@ Board::Board() {
 
   for (int j = 0; j < columns; j++) {
     for (int i = 0; i < rows; i++) {
-      gameBoard[i][j] = ' ';
+      gameBoard[i][j] = '_';
     }
   }
-  
+
 }
 
 
@@ -33,7 +33,7 @@ Board::Board(int rowsToAdd, int colsToAdd) {
 
   for (int j = 0; j < columns; j++) {
     for (int i = 0; i < rows; i++) {
-      gameBoard[i][j] = ' ';
+      gameBoard[i][j] = '_';
     }
   }
 
