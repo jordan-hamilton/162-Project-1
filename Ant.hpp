@@ -13,7 +13,7 @@ class Ant {
 
   public:
     Ant();
-    Ant(int startingX, int startingY);
+    Ant(int startingX, int startingY, int startingMoves);
     void moveLeft();
     void moveRight();
     void setXCoord(int xIn);
