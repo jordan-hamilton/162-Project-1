@@ -114,9 +114,7 @@ Direction Ant::getOrientation() {
 
 
 void Ant::setMoves(int movesInput) {
-  if (movesInput <= 0) {
-    moves = movesInput;
-  }
+  moves = movesInput;
 }
 
 
