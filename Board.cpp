@@ -114,11 +114,11 @@ void Board::simulate() {
       }
 
       if (gameAnt->getXCoord() < 0 || gameAnt->getXCoord() >= rows) {
-        gameAnt->setXCoord( abs(gameAnt->getXCoord() + rows) % rows );
+        gameAnt->setXCoord( std::abs(gameAnt->getXCoord() + rows) % rows );
       }
 
       if (gameAnt->getYCoord() < 0 || gameAnt->getYCoord() >= columns) {
-        gameAnt->setYCoord( abs(gameAnt->getYCoord() + columns) % columns );
+        gameAnt->setYCoord( std::abs(gameAnt->getYCoord() + columns) % columns );
       }
 
       if (gameBoard[gameAnt->getXCoord()][gameAnt->getYCoord()] == ' ') {
