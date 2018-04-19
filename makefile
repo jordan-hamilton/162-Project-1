@@ -1,7 +1,7 @@
 project1: main.o Menu.o Ant.o Board.o
 	g++ main.o Menu.o Ant.o Board.o -o project1
 
-main.o: main.cpp
+main.o: main.cpp Menu.cpp Menu.hpp Board.cpp Board.hpp
 	g++ -std=c++0x -c main.cpp
 
 Menu.o: Menu.cpp Menu.hpp
