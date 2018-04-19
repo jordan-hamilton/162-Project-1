@@ -133,13 +133,13 @@ void Board::addAnt(Ant* newAnt) {
 
 
 /***********************************************************************************************
-** Description: If the pointer is a valid address, loop as long as the Ant object has remaining
-** moves by alternating the state of the Board tile where the Ant resides from B (black) to W
-** (white) or vice versa, then moving the Ant. If the Ant reaches an edge, continue the
-** simulation on the opposite side of the board using modular arithmetic. Then, update the state
-** of the current tile based on the char element in the 2D array at the Ant's current location
-** and update the char to visually indicate the Ant's location. Finally, display the board to
-** the user with the printBoard method.
+** Description: If the pointer is a valid address, print the board.
+** Next, loop as long as the Ant object has remaining moves by alternating the state of the
+** Board tile where the Ant resides from B (black) to W (white) or vice versa, then moving the
+** Ant. If the Ant reaches an edge, continue the simulation on the opposite side of the board
+** using modular arithmetic. Then, update the state of the current tile based on the char
+** element in the 2D array at the Ant's current location and update the char to visually indicate
+** the Ant's location. Finally, display the board to the user with the printBoard method.
 ***********************************************************************************************/
 void Board::simulate() {
 
