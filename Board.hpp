@@ -5,6 +5,9 @@
 #ifndef BOARD_HPP
 #define BOARD_HPP
 
+#include <iostream>
+#include <cmath>
+
 #include "Ant.hpp"
 
 class Board {
