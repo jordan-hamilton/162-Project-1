@@ -1,8 +1,9 @@
-#include <string>
-#include <iostream>
-#include <limits>
+#include "menu.hpp"
 
-#include "Menu.hpp"
+using std::cin;
+using std::cout;
+using std::endl;
+using std::string;
 
 
 /***********************************************************************************************
@@ -10,53 +11,67 @@
 ** Used before the getIntChoiceFromPrompt function so input can be retrieved.
 ***********************************************************************************************/
 void displayMenu() {
-  std::cout << "1) Start Langton’s Ant simulation" << std::endl;
-  std::cout << "2) Quit" << std::endl;
+  cout << "1) Start Langton’s Ant simulation" << endl;
+  cout << "2) Quit" << endl;
 }
 
 
 /***********************************************************************************************
-** Description: Takes a references to a string used to indicate a prompt for the user to enter
+** Description: Takes a reference to a string used to indicate a prompt for the user to enter
 ** data, followed by references to integers that output valid values to hint that the user
-** should enter an integer value within the entered values. Input is passed to checkIntInput
-** for basic validation, then the integer value the user entered is returned if it was valid.
-** Otherwise, the prompt is repeated.
+** should enter an integer value within the entered values. Input is passed to validateInput and
+** validateRange to verify that the input is an integer and falls within a valid range for the
+** prompt, then the integer value the user entered is returned if it was valid. Otherwise, the
+** prompt is repeated.
 ***********************************************************************************************/
-int getIntChoiceFromPrompt(const std::string &prompt, const int &minVal, const int &maxVal) {
+int getIntChoiceFromPrompt(const string &prompt, const int &minVal, const int &maxVal) {
 
-  int userInput;
+  string userInput;
 
   do {
-    std::cout << prompt << std::endl;
-    std::cout << "Valid input range: [" << minVal << " - " << maxVal << "]: ";
-    std::cin >> userInput;
-  } while(!checkIntInput(userInput, minVal, maxVal));
+    cout << prompt << endl;
+    cout << "Valid input range: [" << minVal << " - " << maxVal << "]: ";
+    getline(cin, userInput);
+  } while(!validateInput(userInput) || !validateRange(stoi(userInput), minVal, maxVal));
 
-return userInput;
+return stoi(userInput);
 
+}
+
+
+/*********************************************************************
+** Description: This function accepts a reference to a string, which
+** is then looped through to search for non-digit characters. The
+** return value is true is there are only digits in the string passed
+** to the function, otherwise, the function returns false.
+*********************************************************************/
+bool validateInput(const string &inputStr) {
+  bool isValid = true;
+
+  if (inputStr.empty()) {
+    isValid = false;
+  }
+
+  for (int i = 0; i < inputStr.length(); i++) {
+    if (!isdigit(inputStr[i])) {
+      isValid = false;
+    }
+  }
+
+  return isValid;
 }
 
 
 /***********************************************************************************************
 ** Description: Takes a reference to an integer value to check, and minimum and maximum values.
-** If the input is of the incorrect type, this clears the failbit, ignores the rest of the
-** input, and returns false. If the input is an integer and in the valid range, the function
-** returns true. Otherwise, it returns false.
-** Source: http://en.cppreference.com/w/cpp/io/basic_ios/clear
-** Source: http://www.cplusplus.com/reference/istream/istream/ignore/
+** If the input is an integer and in the valid range, the function returns true. Otherwise,
+** it returns false.
 ***********************************************************************************************/
-bool checkIntInput(const int &inputVal, const int &minVal, const int &maxVal) {
+bool validateRange(const int &inputVal, const int &minVal, const int &maxVal) {
 
-  if (!std::cin) {
-    std::cin.clear();
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    return false;
+  if ((inputVal >= minVal) && (inputVal <= maxVal)) {
+    return true;
   } else {
-
-    if ((inputVal >= minVal) && (inputVal <= maxVal)) {
-      return true;
-    } else {
-      return false;
-    }
+    return false;
   }
 }
