@@ -1,17 +1,20 @@
-project1: main.o Menu.o Ant.o Board.o
-	g++ -std=c++0x main.o Menu.o Ant.o Board.o -o project1
+# Source: http://web.engr.oregonstate.edu/~rookert/cs162/03.mp4
 
-main.o: main.cpp Menu.cpp Menu.hpp Board.cpp Board.hpp
-	g++ -std=c++0x -c main.cpp
+CXX = g++
+CXXFLAGS = -std=c++0x
+CXXFLAGS += -Wall
+CXXFLAGS += -pedantic-errors
+CXXFLAGS += -g
 
-Menu.o: Menu.cpp Menu.hpp
-	g++ -std=c++0x -c Menu.cpp
+OBJS = main.o Ant.o Board.o menu.o
+SRCS = main.cpp  Ant.cpp Board.cpp menu.cpp
+HEADERS = Ant.hpp Board.hpp menu.hpp
 
-Ant.o: Ant.cpp Ant.hpp
-	g++ -std=c++0x -c Ant.cpp
+project1: $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o project1
 
-Board.o: Board.cpp Board.hpp Ant.cpp Ant.hpp
-	g++ -std=c++0x -c Board.cpp
+$(OBJS): $(SRCS) $(HEADERS)
+	$(CXX) $(CXXFLAGS) -c $(@:.o=.cpp)
 
 clean:
 	rm *.o project1
