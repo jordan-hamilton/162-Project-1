@@ -1,7 +1,7 @@
 /*********************************************************************
 ** Program name: Project 1
 ** Author: Jordan Hamilton
-** Date: 04/17/2018
+** Date: 10/07/2018
 ** Description: This program prompts the user to select a number of
 ** rows and columns, then creates an Board object, dynamically
 ** allocating a 2D array of the selected size. The user is also
@@ -15,9 +15,8 @@
 
 #include <iostream>
 #include <string>
-#include <limits>
 
-#include "Menu.hpp"
+#include "menu.hpp"
 #include "Board.hpp"
 
 using std::cin;
@@ -38,12 +37,12 @@ int main() {
   }
 
   do {
-    
-    requestedRows = getIntChoiceFromPrompt("How many rows should there be on this board?", 1, std::numeric_limits<int>::max());
-    requestedCols = getIntChoiceFromPrompt("How many columns should there be on this board?", 1, std::numeric_limits<int>::max());
+
+    requestedRows = getIntChoiceFromPrompt("How many rows should there be on this board?", 1, 1000);
+    requestedCols = getIntChoiceFromPrompt("How many columns should there be on this board?", 1, 1000);
     startingRow = getIntChoiceFromPrompt("Which row should the ant start in?\nNote: Row 0 is the top row.", 0, requestedRows-1);
     startingCol = getIntChoiceFromPrompt("Which column should the ant start in?\nNote: Column 0 is the left row.", 0, requestedCols-1);
-    requestedSteps = getIntChoiceFromPrompt("How many steps should there be in this simulation?", 1, std::numeric_limits<int>::max());
+    requestedSteps = getIntChoiceFromPrompt("How many steps should there be in this simulation?", 1, 10000);
 
     Board antBoard(requestedRows, requestedCols);
     Ant gameAnt(startingRow, startingCol, requestedSteps);
